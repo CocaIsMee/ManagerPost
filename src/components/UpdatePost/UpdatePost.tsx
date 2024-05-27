@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button, Form, Input, Select, message } from "antd";
+import Navbar from "../HomePage/Navbar/Navbar";
 
 interface DataType {
   id: string;
@@ -65,43 +66,48 @@ const UpdatePost = () => {
   }
 
   return (
-    <Form
-      initialValues={post}
-      onFinish={handleUpdate}
-      layout="vertical"
-      style={{ maxWidth: 600, margin: "0 auto", padding: "2rem" }}
-    >
-      <Form.Item name="title" label="Title" rules={[{ required: true, message: "Please input the title!" }]}>
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name="description"
-        label="Description"
-        rules={[{ required: true, message: "Please input the description!" }]}
+
+    <>
+      <Navbar />
+      <h1 className="page-title">Update Post</h1>
+      <Form
+        initialValues={post}
+        onFinish={handleUpdate}
+        layout="vertical"
+        style={{ maxWidth: 600, margin: "0 auto", padding: "2rem" }}
       >
-        <Input.TextArea />
-      </Form.Item>
-      <Form.Item name="status" label="Status" rules={[{ required: true, message: "Please select the status!" }]}>
-        <Select>
-          <Option value="Published">Published</Option>
-          <Option value="Draft">Draft</Option>
-        </Select>
-      </Form.Item>
-      <Form.Item name="url_tag" label="URL Tag" rules={[{ required: true, message: "Please input the URL tag!" }]}>
-        <Input value={urlTag} onChange={(e) => setUrlTag(e.target.value)} />
-      </Form.Item>
-      <Form.Item name="image" label="Image">
-        <Input value={image} onChange={(e) => setImage(e.target.value)} />
-      </Form.Item>
-      <Form.Item name="video" label="Video">
-        <Input value={video} onChange={(e) => setVideo(e.target.value)} />
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Update Post
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item name="title" label="Title" rules={[{ required: true, message: "Please input the title!" }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name="description"
+          label="Description"
+          rules={[{ required: true, message: "Please input the description!" }]}
+        >
+          <Input.TextArea />
+        </Form.Item>
+        <Form.Item name="status" label="Status" rules={[{ required: true, message: "Please select the status!" }]}>
+          <Select>
+            <Option value="Published">Published</Option>
+            <Option value="Draft">Draft</Option>
+          </Select>
+        </Form.Item>
+        <Form.Item name="urlTag" label="URL Tag" rules={[{ required: true, message: "Please input the URL tag!" }]}>
+          <Input value={urlTag} onChange={(e) => setUrlTag(e.target.value)} />
+        </Form.Item>
+        <Form.Item name="image" label="Image">
+          <Input value={image} onChange={(e) => setImage(e.target.value)} />
+        </Form.Item>
+        <Form.Item name="video" label="Video">
+          <Input value={video} onChange={(e) => setVideo(e.target.value)} />
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Update Post
+          </Button>
+        </Form.Item>
+      </Form></>
+
   );
 };
 

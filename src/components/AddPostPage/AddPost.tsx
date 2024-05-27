@@ -31,6 +31,8 @@ const AddPost: React.FC = () => {
   const [statusOptions] = useState(["Published", "Draft"]);
   const navigate = useNavigate(); // Initialize useNavigate
   const defaultImage = "https://via.placeholder.com/300?text=No+Image"; // Placeholder image URL
+  const rules = [{ required: true, message: "Please input the title" },
+  { max: 4, message: 'abc', }]
   const [formData, setFormData] = useState<FormData>({
     title: "",
     image: "" || defaultImage,
@@ -74,7 +76,7 @@ const AddPost: React.FC = () => {
                   {...formItemLayout}
                   name="title"
                   label="Title"
-                  rules={[{ required: true, message: "Please input the title" }]}
+                  rules={rules}
                 >
                   <Input value={formData.title} onChange={onChange} name="title" placeholder="Please input the title" />
                 </Form.Item>

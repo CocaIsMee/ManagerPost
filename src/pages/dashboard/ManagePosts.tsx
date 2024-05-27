@@ -66,8 +66,8 @@ export const ManagePosts = () => {
     },
     {
       title: "URL Tag",
-      dataIndex: "url_tag",
-      key: "url-tag",
+      dataIndex: "urlTag",
+      key: "urlTag",
       width: "200px",
     },
     {
@@ -91,7 +91,7 @@ export const ManagePosts = () => {
         <>
           <Link to={`/dashboard/updatepost/${id}`}>
             {" "}
-            <Button type="primary ">Edit</Button>
+            <Button type="primary">Edit</Button>
           </Link>
           <Popconfirm
             title="Delete the task"
@@ -113,7 +113,7 @@ export const ManagePosts = () => {
       const response = await axios.get("https://664f16ddfafad45dfae24968.mockapi.io/api/v1/postManagement");
       console.log(response);
       const sortedData = response.data.sort(
-        (a: DataType, b: DataType) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+        (a: DataType, b: DataType) => new Date(b.updateDate).getTime() - new Date(a.updateDate).getTime()
       );
 
       setDatasource(sortedData);
